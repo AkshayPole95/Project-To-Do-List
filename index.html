@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ 
+    <style>
+
+        * {
+            text-align: center;
+        }
+
+        #itemList{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 20px;
+        }
+
+        h1{
+            font-size: 40px;
+            color: rgba(0, 26, 255, 0.644);
+        }
+
+        #itemInput{
+            border-radius: 10px;
+            width: 200px;
+            height: 25px;
+            border: 2px solid  rgba(0, 26, 255, 0.644);
+        }
+
+        button{
+            background-color:  rgba(0, 26, 255, 0.644);;
+            border: none;
+            padding: 7px 15px 7px 15px;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+        }
+
+        button:hover{
+            border: 1px solid;
+            background-color:  rgb(255, 0, 0);
+        }
+
+        body{
+            
+            background-image: url(https://www.pixelstalk.net/wp-content/uploads/2016/03/Amazing-Macro-Nature-Hd-Wallpaper.jpg);
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        
+    </style>
+
+</head>
+<body>
+
+    <h1>SHOPLIST NOTEPAD</h1>
+
+    <input type="text" id="itemInput" placeholder="Enter text">
+    <button id="addItemButton">Add Item</button>
+    <ol id="itemList"></ol>
+
+    <script>
+
+       const button = document.getElementById('addItemButton');
+       const itemList = document.getElementById('itemList');
+       const itemInput = document.getElementById('itemInput');
+      
+       button.addEventListener('click', function() { 
+
+        if (itemInput.value.trim() !== "") {
+            let newItem = document.createElement('li');
+            newItem.textContent = itemInput.value;
+            itemList.appendChild(newItem);
+            itemInput.value = ''; 
+
+            let deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+
+            deleteButton.addEventListener('click', function() {
+                itemList.removeChild(newItem);
+            });
+
+            newItem.appendChild(deleteButton); 
+        }
+       })
+       
+    </script>
+</body>
+</html>
